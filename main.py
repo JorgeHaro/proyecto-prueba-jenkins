@@ -14,18 +14,18 @@ def simulate_merge():
 
     # Simular cambio de rama
     print(f"📌 Estás actualmente en la rama: {current_branch}")
-    time.sleep(1)
+    time.sleep(2)
 
     if "deploy" in branches:
         print("🔄 Cambiando a la rama 'deploy'...")
         current_branch = "deploy"
         time.sleep(1)
     else:
-        print("❌ Error: La rama 'deploy' no existe.")
+        print("❌ Error: La rama 'deploy' no existe, creo.")
         return
     
     print(f"✅ Ahora estás en la rama: {current_branch}")
-    time.sleep(1)
+    time.sleep(2)
 
     # Simular merge de la rama main en deploy
     print("🔀 Realizando merge de 'main' en 'deploy'...")
