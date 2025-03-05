@@ -1,14 +1,14 @@
 import time
-from re_source import *
+from re_curso import *
 
 def simulate_merge():
-    branches = ["main", "feature-1", "feature-2", "deploy"]
+    branches = ["main", "deploy"]
     current_branch = "main"
     
     print("🚀 Iniciando simulación de merge...\n")
 
     # Mostrar las ramas disponibles
-    print("Ramas disponibles en el repositorio:")
+    print("Ramas disponibles en el repo:")
     for branch in branches:
         print(f" - {branch}")
     print()
