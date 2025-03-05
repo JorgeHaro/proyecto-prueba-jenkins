@@ -2,14 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Hola Mondo') {
+        stage('Verificar Merge') {
             steps {
                 script {
-                    def commitMessage = sh(script: "git log -1 --pretty=%B", returnStdout: true).trim()
+                    def parentCount = sh(script: "git rev-list --count --parents -n 1 HEAD | awk '{print NF-1}'", returnStdout: true).trim()
 
-                    echo "Este es el mensaje => ${commitMessage}"
-
-                    if (commitMessage.contains("Merge")) {
+                    if (parentCount.toInteger() > 1) {
                         echo "Hola Mundo, ¡Se ha hecho un MERGE en la rama deploy!"
                     } else {
                         echo "No es un merge, el pipeline no se ejecutará."
