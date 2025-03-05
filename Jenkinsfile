@@ -5,7 +5,7 @@ pipeline {
         stage('Hola Dios') {
             steps {
                 script {
-                    def branch = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
+                    def branch = env.GIT_BRANCH ?: 'desconocida'
                     echo "Hola Dios, llamen a Dios, desde la rama ${branch} y el commit ${env.GIT_COMMIT}"
                 }
             }
