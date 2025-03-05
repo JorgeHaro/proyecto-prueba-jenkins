@@ -2,11 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Hola Dios') {
+        stage('Hola Mondo') {
             steps {
                 script {
-                    def branch = env.GIT_BRANCH ?: 'desconocida'
-                    echo "Hola Dios, llamen a Dios, desde la rama ${branch} y el commit ${env.GIT_COMMIT}"
+                    def commitMessage = sh(script: "git log -1 --pretty=%B", returnStdout: true).trim()
+
+                    if (commitMessage.contains("Merge")) {
+                        echo "Hola Mundo, ¡Se ha hecho un MERGE en la rama deploy!"
+                    } else {
+                        echo "No es un merge, el pipeline no se ejecutará."
+                        currentBuild.result = 'ABORTED'
+                    }
                 }
             }
         }
