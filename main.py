@@ -38,4 +38,5 @@ def simulate_merge():
 
 if __name__ == "__main__":
     imprimir_hola_mundo()
+    print()
     simulate_merge()
