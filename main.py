@@ -1,4 +1,5 @@
 import time
+from re_source import *
 
 def simulate_merge():
     branches = ["main", "feature-1", "feature-2", "deploy"]
@@ -36,4 +37,5 @@ def simulate_merge():
     print("\n✅ Merge completado con éxito en la rama 'deploy' 🎉")
 
 if __name__ == "__main__":
+    imprimir_hola_mundo()
     simulate_merge()
