@@ -7,6 +7,8 @@ pipeline {
                 script {
                     def parentCount = sh(script: "git rev-list --count --parents -n 1 HEAD | awk '{print NF-1}'", returnStdout: true).trim()
 
+                    echo "Numero de padres: ${parentCount}"
+
                     if (parentCount.toInteger() > 1) {
                         echo "Hola Mundo, ¡Se ha hecho un MERGE en la rama deploy!"
                     } else {
