@@ -5,7 +5,10 @@ pipeline {
         stage('Verificar Merge') {
             steps {
                 script {
-                    def parentCount = sh(script: "git rev-list --count --parents -n 1 HEAD | awk '{print NF-1}'", returnStdout: true).trim()
+
+                    sh 'git fetch --unshallow || true'
+
+                    def parentCount = sh(script: "git rev-list --parents -n 1 HEAD | awk '{print NF-1}'", returnStdout: true).trim()
 
                     echo "Numero de padres: ${parentCount}"
 
